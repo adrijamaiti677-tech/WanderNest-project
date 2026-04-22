@@ -51,12 +51,35 @@
             <textarea id="text" onkeyup="countChars()" placeholder="How can we help?"></textarea>
             <p id="charCount">0 characters</p><br>
 
-            
-            <button type="button" onclick="validateContactForm()">Submit Inquiry</button>
+             <button type="submit">Submit Inquiry</button>
         </form>
     </center>
 </div>
+<script>
+function countChars() {
+    let text = document.getElementById("text").value;
+    document.getElementById("charCount").innerText = text.length + " characters";
+}
 
+function validateContactForm() {
+    let name = document.getElementById("username").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let message = document.getElementById("text").value.trim();
+
+    if (name === "" || email === "" || password === "" || message === "") {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters!");
+        return;
+    }
+
+    alert("Inquiry submitted successfully!");
+}
+</script>
 <center>
     <a href="index.html">Back to Home</a>
 </center>
